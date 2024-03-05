@@ -8,14 +8,17 @@ Actualmente sin mantenimiento debido al éxito de la competencia. Si quieres hac
   - [TODO.md](TODO.md)
 
 ## Instrucciones de uso
-Crea un entorno virtual de python e instala las dependencias con el siguiente comando:
+
+Aplicación desarrollada en Python (v3.11) con Flask y Mongo como dependencias principales. Levanta primero un servidor de Mongo en local.
+
+    docker run -p 27017:27017 -d mongo
+
+Primero crea un entorno virtual de python e instala las dependencias con el siguiente comando
 
     python -m venv venv
     pip install -r requirements.txt
 
-
-Aplicación desarrollada en Python (v3.11) con Flask como dependencia principal.
-
+Luego ejecuta la aplicación
     python app.py
 
 Desplegará un servidor web en [http://127.0.0.1:5000](http://127.0.0.1:5000)
