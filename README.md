@@ -18,7 +18,10 @@ Primero crea un entorno virtual de python e instala las dependencias con el sigu
     python -m venv venv
     pip install -r requirements.txt
 
-Luego ejecuta la aplicación
+Luego ejecuta la aplicación, deberás establecer variables de entorno para la sesión.
+
+    export MONGO_IP="localhost"
+    export MONGO_PORT="27017"
     python app.py
 
 Desplegará un servidor web en [http://127.0.0.1:5000](http://127.0.0.1:5000)
