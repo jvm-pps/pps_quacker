@@ -1,0 +1,21 @@
+# Archivos y directorios generados por Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Entorno virtual (venv)
+venv
+
+# Archivos específicos de Docker
+.dockerignore
+dockerfile
+docker-compose.yml
+
+# Archivos de versionamiento (Git)
+.git
+.gitignore
+
+# Archivos específicos de MongoDB
+data/
+db/

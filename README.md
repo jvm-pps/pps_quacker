@@ -8,21 +8,21 @@ Actualmente sin mantenimiento debido al éxito de la competencia. Si quieres hac
   - [TODO.md](TODO.md)
 
 ## Instrucciones de uso
+Aplicación desarrollada en Python (v3.11) con Flask y Mongo como dependencias principales.
 
-Aplicación desarrollada en Python (v3.11) con Flask y Mongo como dependencias principales. Levanta primero un servidor de Mongo en local.
+Creamos la imagen de docker con el siguiente comando:
 
-    docker run -p 27017:27017 -d mongo
+    docker build -t quacker .
 
-Primero crea un entorno virtual de python e instala las dependencias con el siguiente comando
+Creamos una red para que los contenedores puedan comunicarse entre sí:
 
-    python -m venv venv
-    pip install -r requirements.txt
+    docker network create quacker-net
 
-Luego ejecuta la aplicación, deberás establecer variables de entorno para la sesión.
+Lanza un contenedor con la imagen de mongo con el siguiente comando:
+    docker run --name mongo --network quacker-net -p 27017:27017 -d mongo
 
-    export MONGO_IP="localhost"
-    export MONGO_PORT="27017"
-    python app.py
+Lanza un contenedor con la imagen de quacker con el siguiente comando:
+    docker run --name quacker --network quacker-net -p 5000:5000 -d quacker
 
 Desplegará un servidor web en [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
