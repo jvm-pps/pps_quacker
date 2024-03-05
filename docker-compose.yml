@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  # Contenedor para la aplicación
+  app:
+    build:
+      context: .
+    image: quacker
+    container_name: quacker
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb-container
+    networks:
+      - quacker-network
+    environment:
+      - MONGO_IP=mongodb-container
+      - MONGO_PORT=27017
+
+  # Contenedor para MongoDB
+  mongodb-container:
+    image: mongo
+    container_name: mongodb-container
+    volumes:
+      - mongodb-data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - quacker-network
+
+networks:
+  quacker-network:
+    name: quacker-network
+    driver: bridge
+
+volumes:
+  mongodb-data:
+    name: mongodb-data
